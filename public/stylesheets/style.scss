@@ -164,13 +164,15 @@ a {
 		height: 50px;
 		text-align: center;
 		font-size: 36px;
-		width: 150px;
+		width: 50%;
 		border: none;
 		border-bottom: 1px solid #666;
 		outline: none;
+		display: inline-block;
 		color: white;
 		font-family: "FF DIN Pro Cond Light";
 		-webkit-appearance: none;
+  	-webkit-border-radius: 0;
 	}
 	.submit {
 		border: 1px solid white;
