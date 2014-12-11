@@ -38,9 +38,7 @@ router.get('/totals',  function(req, res) {
 	  	} else if (people[i].guests == 'posse') {
 	  		posse += 1;
 	  	}
-
-	  }
-	  var total = guests + people.length;
+		}	
 
 	  var response = {
 	  	solo: solo,
