@@ -27,16 +27,25 @@ router.post('/person/new',  function(req, res) {
 router.get('/totals',  function(req, res) {
 	Person.find({}).exec(function(err, people) {
 	  if (err) return console.log(err);
-	  var guests = 0;
+	  var solo = 0,
+	  		plus1 = 0,
+	  		posse = 0;
 	  for (i = 0; i < people.length; i++) { 
-	  	guests += people[i].guests;
+	  	if (people[i].guests == 'solo') {
+	  		solo += 1;
+	  	} else if (people[i].guests == 'plus1') {
+	  		plus1 += 1;
+	  	} else if (people[i].guests == 'posse') {
+	  		posse += 1;
+	  	}
+
 	  }
 	  var total = guests + people.length;
 
 	  var response = {
-	  	guests: guests,
-	  	people: people.length,
-	  	total: total
+	  	solo: solo,
+	  	plus1: plus1,
+	  	posse: posse
 	  }
 
 	  res.send(response);

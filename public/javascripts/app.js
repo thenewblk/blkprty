@@ -443,13 +443,13 @@ var BLKPRTY = React.createClass({
               <input placeholder="Last" onChange={self.handleLast}  />
             </div>
             <div className="form-row">
-              <form className="ac-custom ac-radio ac-fill" autocomplete="off">
+              <div className="scribbles" autocomplete="off">
                 <ul>
                   <li><input id="r1" name="r1" type="radio" value="solo" onChange={self.handleGuest}/><label for="r1">Going solo</label></li>
                   <li><input id="r2" name="r1" type="radio" value="plus1" onChange={self.handleGuest}/><label for="r2">Bringing a +1</label></li>
                   <li><input id="r3" name="r1" type="radio" value="posse" onChange={self.handleGuest}/><label for="r3">Rolling with a small posse</label></li>
                 </ul>
-              </form>
+              </div>
             </div>
             <div className="form-row">
               { (self.state.first.length > 0) && (self.state.last.length > 0) && (self.state.guests.length > 0) ? <span className="submit" onClick={self.submitContent}>RSVP</span> : "" }

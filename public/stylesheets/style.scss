@@ -199,27 +199,27 @@ a {
 	display: none;
 }
 
-.ac-custom input[type="radio"] {
+.scribbles input[type="radio"] {
 	-webkit-appearance: none;
 	display: inline-block;
 	vertical-align: middle;
 	z-index: 100;
 }
 
-.ac-custom ul, .ac-custom ol {
+.scribbles ul, .scribbles ol {
 	list-style: none;
 	padding: 0;
 	margin: 0 auto;
 	max-width: 800px;
 }
 
-.ac-custom li {
+.scribbles li {
 	margin: 0 auto;
 	padding: 12px 0;
 	position: relative;
 }
 
-.ac-custom svg {
+.scribbles svg {
 	position: absolute;
 	width: 30px;
 	height: 30px;
@@ -240,7 +240,7 @@ svg:not(:root) {
 }
 
 
-.ac-custom input[type="radio"] {
+.scribbles input[type="radio"] {
 	width: 30px;
 	height: 30px;
 	top: 50%;
@@ -253,12 +253,12 @@ svg:not(:root) {
 	border-radius: 50%;
 }
 
-.ac-custom input[type="radio"]:checked {
+.scribbles input[type="radio"]:checked {
 	border: none;
 	background: rgba(255,255,255,0.9);
 }
 
-.ac-custom label {
+.scribbles label {
 	display: inline-block;
 	position: relative;
 	font-size: 25px;
@@ -270,7 +270,7 @@ svg:not(:root) {
 	transition: color 0.3s;
 }
 
-.ac-custom input[type="checkbox"]:checked + label, .ac-custom input[type="radio"]:checked + label {
+.scribbles input[type="checkbox"]:checked + label, .scribbles input[type="radio"]:checked + label {
 	color: #fff;
 }
 
@@ -283,13 +283,14 @@ svg:not(:root) {
 }
 
 
-	.howard img {
-		position: absolute;
-		bottom: 3%;
-		right: 3%;
-		width: 200px;
-		max-width: 41%;
-	}
+.howard img {
+	position: absolute;
+	bottom: 3%;
+	right: 3%;
+	width: 200px;
+	max-width: 41%;
+}
+
 .thing {
 	color: #f35626;
 	background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
