@@ -5,6 +5,7 @@
 var React = require('react'),
     request = require('superagent');
 
+
 var BLKPRTY = React.createClass({  
   getInitialState: function() {
     return { first: '', last: '', guests: '', submitted: false, total: '', has_first: false, has_last: false, has_guests: false  };
@@ -486,3 +487,5 @@ React.renderComponent(
   BLKPRTY(),
   document.getElementById('content')
 )
+
+require('./svgcheckbox.js');
