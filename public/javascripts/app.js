@@ -453,9 +453,9 @@ var BLKPRTY = React.createClass({
             </div>
             <div className="form-row">
               { (self.state.first.length > 0) && (self.state.last.length > 0) && (self.state.guests.length > 0) ? <span className="submit" onClick={self.submitContent}>RSVP</span> : "" }
-              { (self.state.first.length > 0) && (self.state.last.length > 0) && (self.state.guests.length == 0) ? <h3 className="instructions">Tell us how many guests you’re bringing to rsvp</h3> : "" }
-              { ((self.state.first.length == 0) || (self.state.last.length == 0)) && (self.state.guests.length > 0) ? <h3 className="instructions">Tell us your name to rsvp</h3> : "" }
-              { ((self.state.first.length == 0) || (self.state.last.length == 0)) && (self.state.guests.length == 0) ? <h3 className="instructions">Tell us your name and how many guests you're bringing to rsvp</h3> : "" }
+              { (self.state.first.length > 0) && (self.state.last.length > 0) && (self.state.guests.length == 0) ? <h3 className="instructions">RSVP with # of guests</h3> : "" }
+              { ((self.state.first.length == 0) || (self.state.last.length == 0)) && (self.state.guests.length > 0) ? <h3 className="instructions">RSVP with your name</h3> : "" }
+              { ((self.state.first.length == 0) || (self.state.last.length == 0)) && (self.state.guests.length == 0) ? <h3 className="instructions">RSVP with your name and # of guests</h3> : "" }
             </div>
           </div>
         }
