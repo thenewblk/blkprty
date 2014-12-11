@@ -7,12 +7,16 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var port     = process.env.PORT || 3000;
 
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 var app = express();
+
+app.use(require('node-compass')({mode: 'expanded'}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -26,7 +30,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(require('node-compass')({mode: 'expanded'}));
+
 
 
 app.use('/', routes);
