@@ -14,6 +14,8 @@ var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 var app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -26,8 +28,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('node-compass')({mode: 'expanded'}));
 
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, './public'), { maxAge: 86400000 }));
 
 app.use('/', routes);
 app.use('/users', users);
