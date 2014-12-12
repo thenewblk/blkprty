@@ -333,12 +333,25 @@ svg:not(:root) {
 
 
 @media (max-width: 725px) {
+	#content {
+		overflow-x: hidden;
+	}
+
+	.blkpresents {
+		max-width: 150px;
+	}
 	.blkprty {
+		margin-left: -10%;
 		margin-top: -10%;
+		max-width: 125%;
 	}
 
 	.holiday {
 		margin-top: -10%;
+	}
+
+	.middle-content {
+		margin-top: -15px;
 	}
 
 	.howard {
