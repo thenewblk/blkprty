@@ -19485,14 +19485,53 @@ module.exports = function(arr, fn, initial){
 var React = require('react'),
     request = require('superagent');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.map(clearInterval);
+  }
+};
+
 
 var BLKPRTY = React.createClass({displayName: 'BLKPRTY',  
+  mixins: [SetIntervalMixin], 
   getInitialState: function() {
     return { first: '', last: '', guests: '', submitted: false, total: '', has_first: false, has_last: false, has_guests: false  };
   },
 
   componentDidMount: function(){
     console.log('Column Editor Mounted');
+    var x = 0;
+    var self = this;
+    
+    function flicker () {
+        if (x % 3 === 0) {
+                self.setState({flicker_class: '_7 _6 _2'});
+                x++;
+        } else if (x % 2 === 0) {
+                self.setState({flicker_class: '_4 _5 _3 _1'});
+                x++;
+        } else if (x % 5 === 0) {
+                self.setState({flicker_class: '_1 _2 _6 _7'});
+                x++;
+        } else {
+          self.setState({flicker_class: '_1 _2 _3 _4 _5 _6 _7'});
+          x++;
+        }
+    }
+
+    (function loop() {
+      var rand = Math.round(Math.random() * (1000 - 50)) + 50;
+      window.setTimeout(function() {
+        flicker();
+        loop();  
+      }, rand);
+    }());
   },
 
   // 
@@ -19569,29 +19608,6 @@ var BLKPRTY = React.createClass({displayName: 'BLKPRTY',
     var x = 0;
     var self = this;
     
-    function flicker () {
-        if (x % 3 === 0) {
-                self.setState({flicker_class: '_7 _6 _2'});
-                x++;
-        } else if (x % 2 === 0) {
-                self.setState({flicker_class: '_4 _5 _3 _1'});
-                x++;
-        } else if (x % 5 === 0) {
-                self.setState({flicker_class: '_1 _2 _6 _7'});
-                x++;
-        } else {
-          self.setState({flicker_class: '_1 _2 _3 _4 _5 _6 _7'});
-          x++;
-        }
-    }
-
-    (function loop() {
-      var rand = Math.round(Math.random() * (200 - 50)) + 50;
-      setTimeout(function() {
-              flicker();
-              loop();  
-      }, rand);
-    }());
 
     if (self.state.guests == 'solo') {
       var thanks_message = "Thanks, see you there. We'll seat you at the rando table.";
@@ -19924,11 +19940,11 @@ var BLKPRTY = React.createClass({displayName: 'BLKPRTY',
               React.createElement("input", {placeholder: "Last", onChange: self.handleLast})
             ), 
             React.createElement("div", {className: "form-row"}, 
-              React.createElement("div", {className: "scribbles", autocomplete: "off"}, 
+              React.createElement("div", {className: "scribbles"}, 
                 React.createElement("ul", null, 
-                  React.createElement("li", null, React.createElement("input", {id: "r1", name: "r1", type: "radio", value: "solo", onChange: self.handleGuest}), React.createElement("label", {for: "r1"}, "Going solo")), 
-                  React.createElement("li", null, React.createElement("input", {id: "r2", name: "r1", type: "radio", value: "plus1", onChange: self.handleGuest}), React.createElement("label", {for: "r2"}, "Bringing a +1")), 
-                  React.createElement("li", null, React.createElement("input", {id: "r3", name: "r1", type: "radio", value: "posse", onChange: self.handleGuest}), React.createElement("label", {for: "r3"}, "Rolling with a small posse"))
+                  React.createElement("li", null, React.createElement("label", {for: "r1"}, React.createElement("input", {id: "r1", name: "r1", type: "radio", value: "solo", onChange: self.handleGuest}), React.createElement("span", null, "Going solo"))), 
+                  React.createElement("li", null, React.createElement("label", {for: "r2"}, React.createElement("input", {id: "r2", name: "r1", type: "radio", value: "plus1", onChange: self.handleGuest}), React.createElement("span", null, "Bringing a +1"))), 
+                  React.createElement("li", null, React.createElement("label", {for: "r3"}, React.createElement("input", {id: "r3", name: "r1", type: "radio", value: "posse", onChange: self.handleGuest}), React.createElement("span", null, "Rolling with a small posse")))
                 )
               )
             ), 

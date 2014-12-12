@@ -51,7 +51,7 @@ a {
 .holiday, .blkprty {
 	max-width: 100%;
 	margin: auto;
-	display: table;
+	display: block;
 }
 
 .holiday {
@@ -254,9 +254,24 @@ svg:not(:root) {
 	border: none;
 	background: rgba(255, 255, 255, 0.6);
 	border-radius: 50%;
+	display: none;
 }
 
-.scribbles input[type="radio"]:checked {
+.scribbles label span:before {
+	content: '';
+	width: 30px;
+	height: 30px;
+	top: 50%;
+	left: 8px;
+	margin-top: -14px;
+	position: absolute;
+	cursor: pointer;
+	border: none;
+	background: rgba(255, 255, 255, 0.6);
+	border-radius: 50%;
+}
+
+.scribbles input[type="radio"]:checked + span:before {
 	border: none;
 	background: rgba(255,255,255,0.9);
 }
@@ -273,7 +288,7 @@ svg:not(:root) {
 	transition: color 0.3s;
 }
 
-.scribbles input[type="checkbox"]:checked + label, .scribbles input[type="radio"]:checked + label {
+.scribbles input[type="radio"]:checked + span {
 	color: #fff;
 }
 

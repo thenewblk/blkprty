@@ -5,14 +5,53 @@
 var React = require('react'),
     request = require('superagent');
 
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.map(clearInterval);
+  }
+};
+
 
 var BLKPRTY = React.createClass({  
+  mixins: [SetIntervalMixin], 
   getInitialState: function() {
     return { first: '', last: '', guests: '', submitted: false, total: '', has_first: false, has_last: false, has_guests: false  };
   },
 
   componentDidMount: function(){
     console.log('Column Editor Mounted');
+    var x = 0;
+    var self = this;
+    
+    function flicker () {
+        if (x % 3 === 0) {
+                self.setState({flicker_class: '_7 _6 _2'});
+                x++;
+        } else if (x % 2 === 0) {
+                self.setState({flicker_class: '_4 _5 _3 _1'});
+                x++;
+        } else if (x % 5 === 0) {
+                self.setState({flicker_class: '_1 _2 _6 _7'});
+                x++;
+        } else {
+          self.setState({flicker_class: '_1 _2 _3 _4 _5 _6 _7'});
+          x++;
+        }
+    }
+
+    (function loop() {
+      var rand = Math.round(Math.random() * (1000 - 50)) + 50;
+      window.setTimeout(function() {
+        flicker();
+        loop();  
+      }, rand);
+    }());
   },
 
   // 
@@ -89,29 +128,6 @@ var BLKPRTY = React.createClass({
     var x = 0;
     var self = this;
     
-    function flicker () {
-        if (x % 3 === 0) {
-                self.setState({flicker_class: '_7 _6 _2'});
-                x++;
-        } else if (x % 2 === 0) {
-                self.setState({flicker_class: '_4 _5 _3 _1'});
-                x++;
-        } else if (x % 5 === 0) {
-                self.setState({flicker_class: '_1 _2 _6 _7'});
-                x++;
-        } else {
-          self.setState({flicker_class: '_1 _2 _3 _4 _5 _6 _7'});
-          x++;
-        }
-    }
-
-    (function loop() {
-      var rand = Math.round(Math.random() * (200 - 50)) + 50;
-      setTimeout(function() {
-              flicker();
-              loop();  
-      }, rand);
-    }());
 
     if (self.state.guests == 'solo') {
       var thanks_message = "Thanks, see you there. We'll seat you at the rando table.";
@@ -444,11 +460,11 @@ var BLKPRTY = React.createClass({
               <input placeholder="Last" onChange={self.handleLast}  />
             </div>
             <div className="form-row">
-              <div className="scribbles" autocomplete="off">
+              <div className="scribbles">
                 <ul>
-                  <li><input id="r1" name="r1" type="radio" value="solo" onChange={self.handleGuest}/><label for="r1">Going solo</label></li>
-                  <li><input id="r2" name="r1" type="radio" value="plus1" onChange={self.handleGuest}/><label for="r2">Bringing a +1</label></li>
-                  <li><input id="r3" name="r1" type="radio" value="posse" onChange={self.handleGuest}/><label for="r3">Rolling with a small posse</label></li>
+                  <li><label for="r1"><input id="r1" name="r1" type="radio" value="solo" onChange={self.handleGuest}/><span>Going solo</span></label></li>
+                  <li><label for="r2"><input id="r2" name="r1" type="radio" value="plus1" onChange={self.handleGuest}/><span>Bringing a +1</span></label></li>
+                  <li><label for="r3"><input id="r3" name="r1" type="radio" value="posse" onChange={self.handleGuest}/><span>Rolling with a small posse</span></label></li>
                 </ul>
               </div>
             </div>
