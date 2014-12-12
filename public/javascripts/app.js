@@ -488,5 +488,4 @@ React.renderComponent(
   document.getElementById('content')
 )
 
-require('./modernizr.custom.js');
 require('./svgcheckbox.js');
