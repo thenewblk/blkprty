@@ -373,3 +373,9 @@ svg:not(:root) {
 		}
 	}
 }
+
+@media (max-width: 725px) {
+	.middle-content {
+		font-size: 15px;
+	}
+}
