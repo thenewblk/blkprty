@@ -19929,7 +19929,7 @@ var BLKPRTY = React.createClass({displayName: 'BLKPRTY',
         ), 
          self.state.submitted ? 
           React.createElement("div", {className: "thanks"}, 
-             self.state.guests == 'solo' ? React.createElement("h2", {className: "thanks-message"}, "Thanks, see you there. We’ll seat you at the rando table.") : '', 
+             self.state.guests == 'solo' ? React.createElement("h2", {className: "thanks-message"}, "Thanks, see you there.") : '', 
              self.state.guests == 'plus1' ? React.createElement("h2", {className: "thanks-message"}, "Thanks, see you and your +1 there.") : '', 
              self.state.guests == 'posse' ? React.createElement("h2", {className: "thanks-message"}, "Thanks, see you and your small posse there.") : ''
           )

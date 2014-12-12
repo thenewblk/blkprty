@@ -449,7 +449,7 @@ var BLKPRTY = React.createClass({
         </div>
         { self.state.submitted ? 
           <div className="thanks">
-            { self.state.guests == 'solo' ? <h2 className="thanks-message">Thanks, see you there. We’ll seat you at the rando table.</h2> : ''}
+            { self.state.guests == 'solo' ? <h2 className="thanks-message">Thanks, see you there.</h2> : ''}
             { self.state.guests == 'plus1' ? <h2 className="thanks-message">Thanks, see you and your +1 there.</h2> : ''}
             { self.state.guests == 'posse' ? <h2 className="thanks-message">Thanks, see you and your small posse there.</h2> : ''}
           </div>
