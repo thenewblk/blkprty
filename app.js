@@ -16,11 +16,11 @@ var configDB = require('./config/database.js');
 mongoose.connect(configDB.url);
 var app = express();
 
-// app.use(require('node-compass')({mode: 'compressed'}));
+app.use(require('node-compass')({mode: 'compressed'}));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('node-compass')({mode: 'compressed'}));
+// app.use(require('node-compass')({mode: 'compressed'}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
