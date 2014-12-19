@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>blk prty</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='icon' href='/images/favicon.png' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="content">
+    	<% people.forEach(function(person, index){ %>
+    		<div class="person">
+    			<h4><%= person.first %> <%= person.last %> ( <%= person.guests %> )</h4>
+    		</div>
+    	<% }); %>
+    </div>
+		<script type="text/javascript">
+		    (function() {
+		        var path = '//easy.myfonts.net/v2/js?sid=161036(font-family=FF+DIN+Pro+Cond)&sid=161636(font-family=FF+DIN+Pro+Cond+Bold)&sid=161925(font-family=FF+DIN+Pro+Cond+Medium)&sid=162172(font-family=FF+DIN+Pro+Cond+Light)&key=FnhdZKduOZ',
+		            protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'),
+		            trial = document.createElement('script');
+		        trial.type = 'text/javascript';
+		        trial.async = true;
+		        trial.src = protocol + path;
+		        var head = document.getElementsByTagName("head")[0];
+		        head.appendChild(trial);
+		    })();
+		</script>
+  </body>
+</html>

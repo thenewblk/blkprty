@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment');
 var router = express.Router();
 var Person = require('../app/models/person');
 /* GET home page. */
@@ -47,6 +48,14 @@ router.get('/totals',  function(req, res) {
 	  }
 
 	  res.send(response);
+	});
+});
+
+router.get('/iwanttoknowwhosgoingtothisprty/todayis'+moment().format('dddd'),  function(req, res) {
+	Person.find({}).exec(function(err, people) {
+		res.render('rsvp', { 
+			people: people 
+		});
 	});
 });
 
