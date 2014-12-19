@@ -8,12 +8,20 @@
   </head>
   <body>
     <div id="content">
+    	<div class="report_card">
+    		<h2>Totals</h2>
+    		<p>Solos: <%= response.solo %></p>
+    		<p>Plus1s: <%= response.plus1 %></p>
+    		<p>Posses: <%= response.posse %></p>
+    		<p>Totals: <%= response.total %></p>
+    	</div>
     	<% people.forEach(function(person, index){ %>
     		<div class="person">
     			<h4><%= person.first %> <%= person.last %> ( <%= person.guests %> )</h4>
     		</div>
     	<% }); %>
     </div>
+
 		<script type="text/javascript">
 		    (function() {
 		        var path = '//easy.myfonts.net/v2/js?sid=161036(font-family=FF+DIN+Pro+Cond)&sid=161636(font-family=FF+DIN+Pro+Cond+Bold)&sid=161925(font-family=FF+DIN+Pro+Cond+Medium)&sid=162172(font-family=FF+DIN+Pro+Cond+Light)&key=FnhdZKduOZ',

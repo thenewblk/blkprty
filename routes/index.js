@@ -51,10 +51,35 @@ router.get('/totals',  function(req, res) {
 	});
 });
 
-router.get('/iwanttoknowwhosgoingtothisprty/todayis'+moment().format('dddd'),  function(req, res) {
+router.get('/iwanttoknowwhosgoingtothisprty/todayis'+moment().format('dddd')+'inlondonithink/blahblahblah.....com',  function(req, res) {
 	Person.find({}).exec(function(err, people) {
+	  if (err) return console.log(err);
+	  var solo = 0,
+	  		plus1 = 0,
+	  		posse = 0;
+	  		total = 0;
+	  for (i = 0; i < people.length; i++) { 
+	  	if (people[i].guests == 'solo') {
+	  		solo += 1;
+	  		total += 1;
+	  	} else if (people[i].guests == 'plus1') {
+	  		plus1 += 1;
+	  		total += 2;
+	  	} else if (people[i].guests == 'posse') {
+	  		posse += 1;
+	  		total += 3;
+	  	}
+		}	
+
+	  var response = {
+	  	solo: solo,
+	  	plus1: plus1,
+	  	posse: posse,
+	  	total: total
+	  }
 		res.render('rsvp', { 
-			people: people 
+			people: people,
+			response: response
 		});
 	});
 });

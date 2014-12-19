@@ -348,7 +348,33 @@ svg:not(:root) {
 
 .person {
 	text-align: center;
-	font-size: 36px;
+	font-size: 25px;
+	h2 {
+		margin: 0;
+		line-height: 1.5;
+	}
+}
+
+.report_card {
+	background: white;
+	color: black;
+	padding: 30px;
+	display: table;
+	min-width: 300px;
+	text-align: center;
+	margin: auto;
+	h2 {
+		font-size: 36px;
+		border-bottom: 1px dashed black;
+		margin: 0;
+		line-height: 1.5;
+		margin-bottom: 10px;
+	}
+	p {
+		font-size: 30px;
+		margin: 0;
+		line-height: 1.5;
+	}
 }
 
 @media (max-width: 725px) {
